@@ -36,6 +36,7 @@ public class Bow : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
+        
         TryAttachArrow(other);
     }
 
@@ -47,8 +48,10 @@ public class Bow : MonoBehaviour
     private void TryAttachArrow(Collider other)
     {
         var arrow = other.GetComponent<Arrow>();
+        Debug.Log(IsAttachButtonDown);
         if (CanAttach(arrow))
         {
+            Debug.Log("triggerenter");
             attachedArrow = arrow;
             attachedArrow.transform.parent = stringAttachPoint.transform;
             attachedArrow.transform.localPosition = arrowStartPoint.transform.localPosition;
